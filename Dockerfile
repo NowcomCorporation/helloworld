@@ -15,7 +15,7 @@ ENV PATH $PATH:/usr/local/go/bin:/go/bin
 ADD . /go/src/github.com/nowcomcorpotation/helloworld
 
 # compile the binary
-RUN cd /go/src/github.com/nwocomcorporation/helloworld && go install -v .
+RUN cd /go/src/github.com/nowcomcorporation/helloworld && go install -v .
 
 FROM alpine
 LABEL maintainer="Robert Kozak <rkozak@nowcom.com>"
