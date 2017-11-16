@@ -22,5 +22,5 @@ func main() {
 func hello(w http.ResponseWriter, req *http.Request) {
 	log.Printf("%s %s\n", req.Proto, req.URL)
 	fmt.Fprintln(w, "Hello Nowcom!")
-	fmt.Fprintf(w, "Test page running on %s\n", os.Getenv("MachineName"))
+	fmt.Fprintf(w, "Test page running on %s\n", os.Getenv("HOSTNAME"))
 }
