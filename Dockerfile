@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:jessie as build-env
 
 # install curl
 RUN apt-get update && apt-get install -qy curl
@@ -12,10 +12,16 @@ ENV GOROOT /usr/local/go
 ENV PATH $PATH:/usr/local/go/bin:/go/bin
 
 # add the current build context
-ADD . /go/src/github.com/deis/helloworld
+ADD . /go/src/github.com/nowcomcorpotation/helloworld
 
 # compile the binary
-RUN cd /go/src/github.com/deis/helloworld && go install -v .
+RUN cd /go/src/github.com/nwocomcorporation/helloworld && go install -v .
+
+FROM alpine
+LABEL maintainer="Robert Kozak <rkozak@nowcom.com>"
+
+WORKDIR /go
+COPY --from=build-env /bin /bin
 
 EXPOSE 80
 
