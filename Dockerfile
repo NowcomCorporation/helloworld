@@ -17,11 +17,12 @@ ADD . /go/src/github.com/nowcomcorporation/helloworld
 # compile the binary
 RUN cd /go/src/github.com/nowcomcorporation/helloworld && go install -v .
 
-FROM alpine
-LABEL maintainer="Robert Kozak <rkozak@nowcom.com>"
+#FROM alpine
+#LABEL maintainer="Robert Kozak <rkozak@nowcom.com>"
 
-WORKDIR /go
-COPY --from=build-env /bin /bin
+#WORKDIR /go/bin
+#COPY --from=build-env /go/bin /go/bin
+#COPY --from=build-env /usr/local/go/bin /usr/local/go/bin
 
 EXPOSE 80
 
